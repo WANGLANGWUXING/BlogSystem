@@ -10,7 +10,7 @@ using BlogSystem.Models;
 
 namespace BlogSystem.BLL
 {
-    public class RolesBll:IRolesBll
+    public class RolesBll : IRolesBll
     {
         private readonly IRolesDal _dal;
 
@@ -70,9 +70,9 @@ namespace BlogSystem.BLL
             return await _dal.QueryByPage(pageSize, pageIndex,
                 r => r.Title.Contains(title), isAsc)
                 .Select(
-                    r=>new RolesDto()
+                    r => new RolesDto()
                     {
-                        Id=r.Id,
+                        Id = r.Id,
                         Title = r.Title,
                         UpdateTime = r.UpdateTime
                     }
@@ -83,13 +83,43 @@ namespace BlogSystem.BLL
         public async Task<RolesDto> GetRolesAsync(Guid id)
         {
             var data = await _dal.QueryAsync(id);
-            if (data == null)return new RolesDto();
-            return  new RolesDto()
+            if (data == null) return new RolesDto();
+            return new RolesDto()
             {
-                Id=data.Id,
+                Id = data.Id,
                 Title = data.Title,
                 UpdateTime = data.UpdateTime
             };
+        }
+
+        public async Task<List<RolesDto>> GetRolesList(string title, bool isAsc)
+        {
+            if (isAsc)
+            {
+                return await _dal
+                    .Query(r => r.Title.Contains(title))
+                    .OrderBy(r => r.UpdateTime)
+                    .Select(r => new RolesDto()
+                    {
+                        Id = r.Id,
+                        Title = r.Title,
+                        UpdateTime = r.UpdateTime
+                    })
+                    .ToListAsync();
+            }
+            else
+            {
+                return await _dal
+                    .Query(r => r.Title.Contains(title))
+                    .OrderByDescending(r => r.UpdateTime)
+                    .Select(r => new RolesDto()
+                    {
+                        Id = r.Id,
+                        Title = r.Title,
+                        UpdateTime = r.UpdateTime
+                    })
+                    .ToListAsync();
+            }
         }
     }
 }

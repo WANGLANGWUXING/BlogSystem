@@ -22,7 +22,7 @@ namespace BlogSystem.IBLL
 
         Task<RolesDto> GetRolesAsync(Guid id);
 
-
+        Task<List<RolesDto>> GetRolesList(string title, bool isAsc);//带分页插件查询
 
     }
 }

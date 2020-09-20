@@ -61,6 +61,14 @@
     <Compile Include="Migrations\202009151216431_Init.designer.cs">
       <DependentUpon>202009151216431_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009181311094_DelAdminImageCol.cs" />
+    <Compile Include="Migrations\202009181311094_DelAdminImageCol.designer.cs">
+      <DependentUpon>202009181311094_DelAdminImageCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009191302087_AddAdminsColumn_Images.cs" />
+    <Compile Include="Migrations\202009191302087_AddAdminsColumn_Images.designer.cs">
+      <DependentUpon>202009191302087_AddAdminsColumn_Images.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs" />
@@ -75,6 +83,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009151216431_Init.resx">
       <DependentUpon>202009151216431_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009181311094_DelAdminImageCol.resx">
+      <DependentUpon>202009181311094_DelAdminImageCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009191302087_AddAdminsColumn_Images.resx">
+      <DependentUpon>202009191302087_AddAdminsColumn_Images.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

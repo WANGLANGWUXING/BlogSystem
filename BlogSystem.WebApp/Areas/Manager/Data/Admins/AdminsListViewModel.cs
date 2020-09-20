@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
-namespace BlogSystem.Models
+namespace BlogSystem.WebApp.Areas.Manager.Data.Admins
 {
-    public class Admins : BaseEntity
+    public class AdminsListViewModel
     {
+        [Key]
+        public Guid Id { get; set; }
         [Required(ErrorMessage = "{0}不能为空")]
         [StringLength(255)]
         [Column(TypeName = "nvarchar")]
@@ -28,18 +33,12 @@ namespace BlogSystem.Models
         [Column(TypeName = "nvarchar")]
         [Display(Name = "头像")]
         public string Photo { get; set; }
-
         [Required(ErrorMessage = "{0}不能为空")]
         [StringLength(255)]
         [Column(TypeName = "nvarchar")]
-        [Display(Name = "小头像")]
-        public string Images { get; set; }//缩略图
+        [Display(Name = "权限名称")]
+        public string RolesTitle { get; set; }
 
-        [Required(ErrorMessage = "{0}不能为空")]
-        [Display(Name = "权限编号")]
-        [ForeignKey(nameof(Roles))]
-        public Guid RolesId { get; set; }
-
-        public Roles Roles { get; set; }
+        public DateTime UpdateTime { get; set; }
     }
 }
